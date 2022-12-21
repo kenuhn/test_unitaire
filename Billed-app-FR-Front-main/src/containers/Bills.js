@@ -8,7 +8,7 @@ export default class {
     this.onNavigate = onNavigate
     this.store = store
     const buttonNewBill = document.querySelector(`button[data-testid="btn-new-bill"]`)
-    if (buttonNewBill) buttonNewBill.addEventListener('click', this.handleClickNewBill)
+    if (buttonNewBill){ buttonNewBill.addEventListener('click', this.handleClickNewBill)}
     const iconEye = document.querySelectorAll(`div[data-testid="icon-eye"]`)
     if (iconEye) iconEye.forEach(icon => {
       icon.addEventListener('click', () => this.handleClickIconEye(icon))
@@ -29,27 +29,14 @@ export default class {
 
   getBills = () => {
     if (this.store) {
-      console.log(this.store.bills())
+      console.log(this.store)
       return this.store
       .bills()
       .list()
       .then(snapshot => {
         
-          const bills = snapshot.sort((a, b) =>{
-       
-            if(parseInt(a.date.replace(/-/g, "")) < parseInt(b.date.replace(/-/g, ""))){
-              return 1
-            } 
-            if(parseInt(a.date.replace(/-/g, "")) > parseInt(b.date.replace(/-/g, ""))){
-              return -1
-            }
-            if(parseInt(a.date.replace(/-/g, "")) === parseInt(b.date.replace(/-/g, ""))){
-              return 0
-            }
-          }
-          )
-        
-        
+          const bills = snapshot
+         // .sort((a,b) => {return ((a.date < b.date) ? 1 : -1 )})
           .map(doc => {
             try {
               return {
@@ -67,8 +54,8 @@ export default class {
                 status: formatStatus(doc.status)
               }
             }
-          })
-          console.log('length', bills)
+          }) 
+         
         return bills
       })
     }

@@ -1,7 +1,6 @@
 import VerticalLayout from './VerticalLayout.js'
 import ErrorPage from "./ErrorPage.js"
 import LoadingPage from "./LoadingPage.js"
-
 import Actions from './Actions.js'
 
 const row =  (bill) => {
@@ -18,33 +17,11 @@ const row =  (bill) => {
     </tr>
     `)
   }
-  console.log(row)
-  /*
-const rows =  (data) => {
-  data =  data.sort( (a, b) => {
-    
-    try{
-      if( parseInt( a.date.replace(/-/g, "")) < parseInt(  b.date.replace(/-/g, ""))){
-        return 1
-      } 
-      if(parseInt( a.date.replace(/-/g, "")) > parseInt (b.date.replace(/-/g, ""))){
-        return -1
-      }
-      if(parseInt( a.date.replace(/-/g, "")) === parseInt( b.date.replace(/-/g, ""))){
-        return 0
-      }
-    }
-    catch(error){
-      console.log(error)
-    }   
-  })
-
-  console.log("data ==> ",data)
-  return (data && data.length) ? data.map(bill => row(bill)).join("") : ""
-}*/
+  console.log()
 const rows = (data) => {
+
   return (data && data.length) ? data
-  .sort( (a, b) => {
+  /* .sort( (a, b) => {
     
     try{
       if( parseInt( a.date.replace(/-/g, "")) < parseInt(  b.date.replace(/-/g, ""))){
@@ -60,14 +37,14 @@ const rows = (data) => {
     catch(error){
       console.log(error)
     }   
-  })
+  }) */
+  .sort((a,b) => {return ((a.date < b.date) ? 1 : -1 )})
   .map(bill => row(bill))
   .join("") : ""
 }
 
 
 export default ({data:  bills, loading, error }) => {
-  console.log(loading)
   const modal = () => (`
     <div class="modal fade" id="modaleFile" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-lg" role="document">

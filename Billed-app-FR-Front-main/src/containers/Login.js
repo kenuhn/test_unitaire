@@ -1,6 +1,6 @@
 import { ROUTES_PATH } from '../constants/routes.js'
 export let PREVIOUS_LOCATION = ''
-
+//import mockStore from "../__mocks__/store"
 // we use a class so as to test its methods in e2e tests
 export default class Login {
   constructor({ document, localStorage, onNavigate, PREVIOUS_LOCATION, store }) {
@@ -37,7 +37,6 @@ export default class Login {
   }
 
   handleSubmitAdmin = e => {
-    console.log(document.getElementById('layout-icon1'))
     e.preventDefault()
     const user = {
       type: "Admin",
