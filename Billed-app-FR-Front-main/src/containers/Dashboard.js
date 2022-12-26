@@ -85,7 +85,7 @@ export default class {
     if (typeof $('#modaleFileAdmin1').modal === 'function') $('#modaleFileAdmin1').modal('show')
   }
 
-  handleEditTicket(e, bill, bills) {
+/*   handleEditTicket(e, bill, bills) {
     if (this.counter === undefined || this.id !== bill.id) this.counter = 0
     if (this.id === undefined || this.id !== bill.id) this.id = bill.id
     if (this.counter % 2 === 0) {
@@ -108,6 +108,21 @@ export default class {
     $('#icon-eye-d').click(this.handleClickIconEye)
     $('#btn-accept-bill').click((e) => this.handleAcceptSubmit(e, bill))
     $('#btn-refuse-bill').click((e) => this.handleRefuseSubmit(e, bill))
+  } */
+
+  handleEditTicket(e, bill, bills) {
+    this.id = bill.id;
+    console.log(bill, bill.id)
+     bills.forEach((b) => {
+      $(`#open-bill${b.id}`).css({ background: '#0D5AE5' });
+    }); 
+    $(`#open-bill${bill.id}`).css({ background: '#2A2B35' });
+    $('.dashboard-right-container div').html(DashboardFormUI(bill));
+    $('.vertical-navbar').css({ height: '150vh' });
+    this.counter++;
+    $('#icon-eye-d').click(this.handleClickIconEye);
+    $('#btn-accept-bill').click((e) => this.handleAcceptSubmit(e, bill));
+    $('#btn-refuse-bill').click((e) => this.handleRefuseSubmit(e, bill));
   }
 
   handleAcceptSubmit = (e, bill) => {
@@ -131,6 +146,7 @@ export default class {
   }
 
   handleShowTickets(e, bills, index) {
+    console.log("counter ==> ", this.counter % 2)
     if (this.counter === undefined || this.index !== index) this.counter = 0
     if (this.index === undefined || this.index !== index) this.index = index
     if (this.counter % 2 === 0) {
