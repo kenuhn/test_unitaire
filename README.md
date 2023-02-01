@@ -1,7 +1,7 @@
 # projet-10-test_unitaire
 
 Correction des bugs dans une plateforme de note de frais 
-sur deux axes; 
+sur deux axes:
 
 - Un axe employé
 - Un axe administrateur 
