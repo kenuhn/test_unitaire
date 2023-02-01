@@ -11,4 +11,4 @@ sur deux axes;
 
 Le but étant de d'avoir une couverture globale au niveau des test d'au moins 85%
 
-![Uploading capture-test-corrigé.png…]()
+![Uploading capture-test-corrigé.png…]
